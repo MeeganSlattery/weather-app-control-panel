@@ -14,7 +14,61 @@
   </head>
   <body>
     <div class="container">
-      <h1>Hello World</h1>
+      <div class="row upper-menu">
+        <div class="col-md-8">
+          <form action="" id="search-form">
+            <input
+              type="text"
+              class="search"
+              placeholder="Search..."
+              id="search-text-input"
+            />
+            <input type="submit" placeholder="Enter" id="search" />
+          </form>
+        </div>
+        <div class="col-md-3">
+          <button id="current-Location" class="currentLocation">
+            Current Location
+          </button>
+        </div>
+        <div class="col-md-1">
+          <button class="units-change">C/F</button>
+        </div>
+      </div>
+      <div class="row temp-box-current-weather">
+        <div class="col-md-6">
+          <h1 class="location">Location</h1>
+          <h3 class="current-temp">Temperature</h3>
+          <div class="current-weather-info">
+            <ul class="ul-current">
+              <li>Pressure <span class="element-number">1000</span></li>
+              <li>Humidity <span class="element-number">80%</span></li>
+              <li>Wind <span class="element-number">10</span></li>
+              <li>Forcast <span class="element-number">clear</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6 radar-iframe">
+          <iframe
+            width="100%"
+            height="300"
+            src="https://embed.windy.com/embed2.html?lat=25.125&lon=-81.606&detailLat=28.634&detailLon=-81.622&width=650&height=450&zoom=4&level=surface&overlay=wind&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=true&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1"
+            frameborder="0"
+          ></iframe>
+          <div class="weekly-forcast-box">
+            <ul>
+              <li>Week Day <br /><span class="week-high-low"> 10 90 </span></li>
+              <li>Week Day <br /><span class="week-high-low"> 10 90 </span></li>
+              <li>Week Day <br /><span class="week-high-low"> 10 90 </span></li>
+              <li>Week Day <br /><span class="week-high-low"> 10 90 </span></li>
+              <li>Week Day <br /><span class="week-high-low"> 10 90 </span></li>
+              <li>Week Day <br /><span class="week-high-low"> 10 90 </span></li>
+              <li>Week Day <br /><span class="week-high-low"> 10 90 </span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row"></div>
     </div>
     <script src="src/index.js"></script>
   </body>

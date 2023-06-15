@@ -49,6 +49,17 @@ form {
   padding-bottom: 1rem;
   border-radius: 5px;
 }
+.dark-cover {
+  background: rgba(0, 0, 0, 0.405);
+  padding-top: 1rem;
+  border-radius: 5px;
+}
+.temp-box {
+  background-image: url("atheria.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 .search {
   width: 100%;
   background-color: rgb(43, 42, 42);
@@ -124,6 +135,8 @@ form {
 }
 .ul-current {
   margin-top: 150px;
+  margin-bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
 }
 .week-box {
   position: relative;
@@ -132,12 +145,17 @@ form {
 }
 .weekday {
   text-align: center;
+  color: rgb(255, 197, 4);
+}
+.week-high-low {
+  color: #ffffff;
 }
 .low {
-  color: rgba(149, 149, 149, 0.403);
+  color: rgba(149, 149, 149, 0.493);
 }
 .element-name {
   line-height: 45px;
+  color: rgb(255, 197, 4);
 }
 .element-number {
   text-align: center;

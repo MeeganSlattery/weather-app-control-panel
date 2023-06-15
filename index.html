@@ -14,42 +14,63 @@
   </head>
   <body>
     <div class="container">
+      <header>
+        <div class="unit">◎</div>
+        <h5 class="today">Today</h5>
+        <p class="date-time">________, 00:00</p>
+      </header>
       <div class="row upper-menu">
-        <div class="col-md-8">
+        <div class="col-10">
           <form action="" id="search-form">
-            <input
-              type="text"
-              class="search"
-              placeholder="Search..."
-              id="search-text-input"
-            />
-            <input
-              type="submit"
-              placeholder="Enter"
-              id="search"
-              class="submit"
-            />
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="text"
+                  class="search"
+                  placeholder="Search..."
+                  id="search-text-input"
+                />
+              </div>
+              <div class="col-3">
+                <input type="submit" id="search" class="submit" value="←" />
+              </div>
+            </div>
           </form>
         </div>
-        <div class="col-md-3">
-          <button id="current-Location" class="currentLocation">
-            Current Location
-          </button>
+        <div class="col-1">
+          <button id="current-Location" class="currentLocation">📍</button>
         </div>
-        <div class="col-md-1">
+        <div class="col-1">
           <button class="units-change">C/F</button>
         </div>
       </div>
       <div class="row temp-box-current-weather">
         <div class="col-md-6 temp-box">
-          <h1 class="location"></h1>
-          <h3 class="current-temp">°__</h3>
+          <h2 class="location">Earth...?</h2>
+          <h1 class="current-temp">°__</h1>
+          <p class="high-low-today">__ <span class="low">__ </span></p>
           <div class="current-weather-info">
             <ul class="ul-current">
-              <li>Pressure <span class="element-number">0000</span></li>
-              <li>Humidity <span class="element-number">00%</span></li>
-              <li>Wind km <span class="element-number">00</span></li>
-              <li>Forcast <span class="element-number">unknown</span></li>
+              <div class="row">
+                <div class="col-9">
+                  <li class="element-name">Pressure</li>
+                  <hr />
+                  <li class="element-name">Humidity</li>
+                  <hr />
+                  <li class="element-name">Wind km</li>
+                  <hr />
+                  <li class="element-name">Foecast</li>
+                </div>
+                <div class="col-3">
+                  <li class="element-number">0000</li>
+                  <hr />
+                  <li class="element-number">00%</li>
+                  <hr />
+                  <li class="element-number">00</li>
+                  <hr />
+                  <li class="element-number">__</li>
+                </div>
+              </div>
             </ul>
           </div>
         </div>
@@ -60,37 +81,68 @@
             height="300"
             src="https://embed.windy.com/embed2.html?lat=16.852&lon=-22.587&detailLat=28.634&detailLon=-81.622&width=650&height=450&zoom=3&level=surface&overlay=wind&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=true&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1"
             frameborder="0"
+            class="iframe"
           >
             ></iframe
           >
           <div class="weekly-forcast-box">
+            <h5 class="week-title">Weekly Forcasts</h5>
+            <br />
             <ul>
-              <li>
-                Week Day <br /><span class="week-high-low"> °00 °00 </span>
-              </li>
-              <li>
-                Week Day <br /><span class="week-high-low"> °00 °00 </span>
-              </li>
-              <li>
-                Week Day <br /><span class="week-high-low"> °00 °00 </span>
-              </li>
-              <li>
-                Week Day <br /><span class="week-high-low"> °00 °00 </span>
-              </li>
-              <li>
-                Week Day <br /><span class="week-high-low"> °00 °00 </span>
-              </li>
-              <li>
-                Week Day <br /><span class="week-high-low"> °00 °00 </span>
-              </li>
-              <li>
-                Week Day <br /><span class="week-high-low"> °00 °00 </span>
-              </li>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="week-box">
+                    <li class="weekday">
+                      Week Day <br /><span class="week-high-low">
+                        00 <span class="low">00 </span>
+                      </span>
+                    </li>
+                  </div>
+                  <div class="week-box">
+                    <li class="weekday">
+                      Week Day <br /><span class="week-high-low">
+                        00 <span class="low">00 </span>
+                      </span>
+                    </li>
+                  </div>
+                  <div class="week-box">
+                    <li class="weekday">
+                      Week Day <br /><span class="week-high-low">
+                        00 <span class="low">00 </span>
+                      </span>
+                    </li>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="week-box">
+                    <li class="weekday">
+                      Week Day <br /><span class="week-high-low">
+                        00 <span class="low">00 </span>
+                      </span>
+                    </li>
+                  </div>
+                  <div class="week-box">
+                    <li class="weekday">
+                      Week Day <br /><span class="week-high-low">
+                        00 <span class="low">00 </span></span
+                      >
+                    </li>
+                  </div>
+                  <div class="week-box">
+                    <li class="weekday">
+                      Week Day <br /><span class="week-high-low">
+                        00 <span class="low">00 </span>
+                      </span>
+                    </li>
+                  </div>
+                </div>
+              </div>
             </ul>
           </div>
         </div>
       </div>
-      <p class="my-name">
+      <footer class="my-name">
         Coded by
         <a
           href="https://linkedin.com/in/meegan-slattery-12725727b"
@@ -107,7 +159,9 @@
         >
           GitHub</a
         >
-      </p>
+        <br />
+        <small class="date">14/06/2023</small>
+      </footer>
     </div>
     <script src="src/index.js"></script>
   </body>

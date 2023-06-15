@@ -1,15 +1,46 @@
 body {
   background-color: rgb(16, 16, 16);
-  color: rgb(248, 248, 248);
+  color: rgb(255, 255, 255);
 }
 li {
   list-style: none;
 }
+footer {
+  text-align: center;
+  font-size: small;
+  margin: 20px;
+}
+a {
+  color: aqua;
+}
+form {
+  background-color: rgb(33, 33, 33);
+  border-radius: 5px;
+}
+
 .container {
   margin-top: 1rem;
 }
+.today,
+.date-time {
+  text-align: center;
+}
+
+.today {
+  margin-bottom: 0;
+}
+.unit {
+  color: aqua;
+  position: fixed;
+  left: 5px;
+  top: 3px;
+  font-size: large;
+}
 .upper-menu {
   margin: 1rem;
+  position: sticky;
+  top: 0;
+  padding-top: 3px;
 }
 .temp-box,
 .radar-iframe-box {
@@ -20,26 +51,109 @@ li {
 }
 .search {
   width: 100%;
-  background-color: rgb(35, 35, 35);
-  color: white;
+  background-color: rgb(43, 42, 42);
+  color: rgb(255, 255, 255);
   border: none;
   border-radius: 5px;
   line-height: 30px;
   padding-left: 10px;
 }
 .submit {
-  width: 100px;
-  background-color: rgba(0, 0, 0, 0);
-  color: white;
+  font-size: small;
+  text-align: center;
+  width: 100%;
+  background: none;
+  color: rgb(255, 255, 255);
   border: none;
-  border-radius: 5px;
+  padding-top: 6px;
+  position: relative;
+  left: -12px;
+  transition: all 200ms ease-in-out;
+}
+.submit:hover {
+  color: rgb(209, 35, 35);
 }
 .currentLocation {
   width: 100%;
-  background-color: rgb(0, 157, 214);
-  color: white;
+  color: rgb(255, 255, 255);
+  background: none;
   border: none;
   border-radius: 5px;
   display: block;
   margin: 0 auto;
+  transition: all 200ms ease-in-out;
+}
+.currentLocation:hover {
+  color: rgb(209, 35, 35);
+}
+.units-change {
+  background: none;
+  width: 40px;
+  color: #ffffff;
+  border: none;
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 0 auto;
+  font-size: small;
+  transition: all 200ms ease-in-out;
+}
+.units-change:hover {
+  color: rgb(35, 209, 206);
+}
+.location,
+.current-temp,
+.high-low-today {
+  text-align: center;
+}
+.current-temp {
+  position: relative;
+  left: -6px;
+}
+.high-low-today {
+  font-size: small;
+}
+.location {
+  margin-top: 80px;
+}
+.week-box,
+.ul-current {
+  background: rgb(32, 32, 32);
+  padding: 1rem;
+  border-radius: 5px;
+}
+.ul-current {
+  margin-top: 150px;
+}
+.week-box {
+  position: relative;
+  left: -15px;
+  margin-top: 0.75rem;
+}
+.weekday {
+  text-align: center;
+}
+.low {
+  color: rgba(149, 149, 149, 0.403);
+}
+.element-name {
+  line-height: 45px;
+}
+.element-number {
+  text-align: center;
+  line-height: 45px;
+}
+.iframe {
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.week-title {
+  text-align: center;
+  padding-top: 6px;
+  margin-bottom: 0;
+}
+.date {
+  color: rgba(255, 255, 255, 0.066);
+  font-family: monospace;
+  font-size: small;
 }

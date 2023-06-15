@@ -32,8 +32,8 @@ form {
 .unit {
   color: aqua;
   position: fixed;
-  left: 5px;
-  top: 3px;
+  left: 10px;
+  top: 4px;
   font-size: large;
 }
 .upper-menu {
@@ -76,9 +76,9 @@ form {
   background: none;
   color: rgb(255, 255, 255);
   border: none;
-  padding-top: 6px;
   position: relative;
-  left: -12px;
+  left: -15px;
+  top: +3px;
   transition: all 200ms ease-in-out;
 }
 .submit:hover {
@@ -92,6 +92,8 @@ form {
   border-radius: 5px;
   display: block;
   margin: 0 auto;
+  position: relative;
+  left: -1px;
   transition: all 200ms ease-in-out;
 }
 .currentLocation:hover {

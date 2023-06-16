@@ -18,7 +18,7 @@ function displayCurrentDate() {
 }
 displayCurrentDate();
 
-function displayCurrentTemperature(response) {
+function displayCurrentTemperatureSearch(response) {
   console.log(response.data);
   let roundedTempData = `°${Math.round(response.data.temperature.current)}`;
   let currentTemperatureEliment = document.querySelector("#current-temp");
@@ -43,11 +43,25 @@ function displayCurrentTemperature(response) {
   let searchedConditionsData = response.data.condition.description;
   let forcastEliment = document.querySelector("#forecast");
   forcastEliment.innerHTML = searchedConditionsData;
+
+  let searchedCoorDataLat = response.data.coordinates.latitude;
+  let searchedCoorDataLon = response.data.coordinates.longitude;
+  console.log`${searchedCoorDataLat} ${searchedCoorDataLon}`;
+  let iframe = document.querySelector("#iframe");
+  iframe.innerHTML = `<iframe
+              width="100%"
+              height="300"
+              src="https://embed.windy.com/embed2.html?lat=${searchedCoorDataLat}&lon=${searchedCoorDataLon}&detailLat=28.634&detailLon=-81.622&width=650&height=450&zoom=3&level=surface&overlay=wind&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=true&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1"
+              frameborder="0"
+              class="iframe"
+            >
+              ></iframe
+            >`;
 }
 
 let apiKey = "3f2244aoecf15c232c55c6ccebt260f0";
-let q = "Lisbon";
+let q = "Berlin";
 let apiUrlCity = `https://api.shecodes.io/weather/v1/current?query=${q}&key=${apiKey}&units=metric`;
 
 console.log(apiUrlCity);
-axios.get(apiUrlCity).then(displayCurrentTemperature);
+axios.get(apiUrlCity).then(displayCurrentTemperatureSearch);

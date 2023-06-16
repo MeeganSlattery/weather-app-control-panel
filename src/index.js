@@ -20,7 +20,7 @@ displayCurrentDate();
 
 function displayCurrentTemperature(response) {
   console.log(response.data);
-  let roundedTempData = Math.round(response.data.temperature.current);
+  let roundedTempData = `°${Math.round(response.data.temperature.current)}`;
   let currentTemperatureEliment = document.querySelector("#current-temp");
   currentTemperatureEliment.innerHTML = roundedTempData;
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Controle Panel</title>
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -11,13 +12,14 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
       <header>
         <div class="unit">C</div>
         <h5 class="today">Today</h5>
-        <p class="date-time">________, 00:00</p>
+        <p class="date-time" id="date-time">________, 00:00</p>
       </header>
       <div class="row upper-menu">
         <div class="col-8">
@@ -48,29 +50,29 @@
         <div class="col-md-6 temp-box">
           <div class="dark-cover">
             <h2 class="icon"></h2>
-            <h2 class="location">Earth...?</h2>
-            <h1 class="current-temp">°25</h1>
+            <h2 class="location" id="location">Earth...</h2>
+            <h1 class="current-temp" id="current-temp">°</h1>
             <p class="high-low-today">42 <span class="low">20 </span></p>
             <div class="current-weather-info">
               <ul class="ul-current">
                 <div class="row">
-                  <div class="col-9">
+                  <div class="col-8">
                     <li class="element-name">Pressure</li>
                     <hr />
                     <li class="element-name">Humidity</li>
                     <hr />
-                    <li class="element-name">Wind km</li>
+                    <li class="element-name">Wind</li>
                     <hr />
                     <li class="element-name">Forecast</li>
                   </div>
-                  <div class="col-3">
-                    <li class="element-number">0000</li>
+                  <div class="col-4">
+                    <li class="element-number" id="pressure"></li>
                     <hr />
-                    <li class="element-number">00%</li>
+                    <li class="element-number" id="humidity"></li>
                     <hr />
-                    <li class="element-number">00</li>
+                    <li class="element-number" id="wind">00</li>
                     <hr />
-                    <li class="element-number">__</li>
+                    <li class="element-number" id="forecast">__</li>
                   </div>
                 </div>
               </ul>

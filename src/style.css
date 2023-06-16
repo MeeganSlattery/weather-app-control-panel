@@ -169,6 +169,9 @@ form {
   text-align: center;
   line-height: 45px;
 }
+.forecast {
+  text-transform: capitalize;
+}
 .iframe {
   border-radius: 5px;
   margin-bottom: 20px;

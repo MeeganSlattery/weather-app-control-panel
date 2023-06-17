@@ -43,7 +43,9 @@ function displayCurrentTemperatureSearch(response) {
   let searchedConditionsData = response.data.condition.description;
   let forcastEliment = document.querySelector("#forecast");
   forcastEliment.innerHTML = searchedConditionsData;
+}
 
+function searchedIframe(response) {
   let searchedCoorDataLat = response.data.coordinates.latitude;
   let searchedCoorDataLon = response.data.coordinates.longitude;
   console.log`${searchedCoorDataLat} ${searchedCoorDataLon}`;
@@ -65,3 +67,4 @@ let apiUrlCity = `https://api.shecodes.io/weather/v1/current?query=${q}&key=${ap
 
 console.log(apiUrlCity);
 axios.get(apiUrlCity).then(displayCurrentTemperatureSearch);
+axios.get(apiUrlCity).then(searchedIframe);

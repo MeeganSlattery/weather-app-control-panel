@@ -30,6 +30,7 @@ function displayCurrentTemperatureSearch(response) {
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${searchedIconData}.png`
   );
+  mainIconEliment.setAttribute("alt", searchedIconData);
 
   let searchedCityData = response.data.city;
   let LocationEliment = document.querySelector("#location");
@@ -83,14 +84,28 @@ function changeBackground(response) {
     iconDecide === "mist-night"
   ) {
     backgroundEliment.classList.add("back-switch");
+  } else {
+    backgroundEliment.classList.remove("back-switch");
   }
 }
 
-let apiKey = "3f2244aoecf15c232c55c6ccebt260f0";
-let q = "Anchorage";
-let apiUrlCity = `https://api.shecodes.io/weather/v1/current?query=${q}&key=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "3f2244aoecf15c232c55c6ccebt260f0";
+  let apiUrlCity = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
-console.log(apiUrlCity);
-axios.get(apiUrlCity).then(displayCurrentTemperatureSearch);
-axios.get(apiUrlCity).then(searchedIframe);
-axios.get(apiUrlCity).then(changeBackground);
+  console.log(apiUrlCity);
+  axios.get(apiUrlCity).then(displayCurrentTemperatureSearch);
+  axios.get(apiUrlCity).then(searchedIframe);
+  axios.get(apiUrlCity).then(changeBackground);
+}
+
+function handleSearch(event) {
+  event.preventDefault();
+  let searchInputElement = document.querySelector("#search-text-input");
+  search(searchInputElement.value);
+  console.log(searchInputElement.value);
+}
+
+let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", handleSearch);
+search("London");

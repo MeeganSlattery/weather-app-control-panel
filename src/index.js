@@ -51,6 +51,8 @@ function displayCurrentTemperatureSearch(response) {
   let searchedConditionsData = response.data.condition.description;
   let forcastEliment = document.querySelector("#forecast");
   forcastEliment.innerHTML = searchedConditionsData;
+
+  celsius = Math.round(response.data.temperature.current);
 }
 
 function searchedIframe(response) {
@@ -106,6 +108,32 @@ function handleSearch(event) {
   console.log(searchInputElement.value);
 }
 
+let isFahrenheit = false;
+
+function toggleUnits(event) {
+  let currentTemperatureElement = document.querySelector("#current-temp");
+  let unitLable = document.querySelector("#unit-lable");
+
+  if (isFahrenheit) {
+    // Convert back to Celsius
+    currentTemperatureElement.innerHTML = `°${Math.round(celsius)}`;
+    unitLable.innerHTML = `C`;
+    isFahrenheit = false;
+  } else {
+    // Convert to Fahrenheit
+    let fahrenheit = (celsius * 9) / 5 + 32;
+    currentTemperatureElement.innerHTML = `°${Math.round(fahrenheit)}`;
+    unitLable.innerHTML = `F`;
+    isFahrenheit = true;
+  }
+}
+
+let celsius = null;
+
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearch);
+
+let unitButton = document.querySelector("#unit-button");
+unitButton.addEventListener("click", toggleUnits);
+
 search("London");

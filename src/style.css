@@ -60,6 +60,12 @@ form {
   background-position: center;
   background-size: cover;
 }
+.back-switch {
+  background-image: url("atheriaDark.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 .search {
   width: 100%;
   background-color: rgb(43, 42, 42);
@@ -127,13 +133,13 @@ form {
   font-size: medium;
 }
 .location {
-  margin-top: 80px;
+  margin-top: 10px;
 }
 .icon {
-  font-size: xx-large;
-  position: relative;
-  left: +10px;
-  top: -10px;
+  font-size: xx-small;
+  display: block;
+  margin: 0% auto;
+  margin-top: 50px;
 }
 .week-box,
 .ul-current {
@@ -142,7 +148,7 @@ form {
   border-radius: 5px;
 }
 .ul-current {
-  margin-top: 150px;
+  margin-top: 65px;
   margin-bottom: 0;
   background: rgba(0, 0, 0, 0.45);
 }

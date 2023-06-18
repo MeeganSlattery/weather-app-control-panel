@@ -106,6 +106,7 @@ form {
   color: rgb(209, 35, 35);
 }
 .units-change {
+  display: inline;
   background: none;
   width: 40px;
   color: #ffffff;

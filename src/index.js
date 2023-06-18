@@ -20,7 +20,9 @@ displayCurrentDate();
 
 function displayCurrentTemperatureSearch(response) {
   console.log(response.data);
-  let roundedTempData = `°${Math.round(response.data.temperature.current)}`;
+  let roundedTempData = `°${Math.round(
+    response.data.temperature.current
+  )} <small>C</small>`;
   let currentTemperatureEliment = document.querySelector("#current-temp");
   currentTemperatureEliment.innerHTML = roundedTempData;
 
@@ -46,13 +48,14 @@ function displayCurrentTemperatureSearch(response) {
 
   let searchedWindData = Math.round(response.data.wind.speed);
   let windEliment = document.querySelector("#wind");
-  windEliment.innerHTML = `${searchedWindData} km`;
+  windEliment.innerHTML = `${searchedWindData} kmph`;
 
   let searchedConditionsData = response.data.condition.description;
   let forcastEliment = document.querySelector("#forecast");
   forcastEliment.innerHTML = searchedConditionsData;
 
   celsius = Math.round(response.data.temperature.current);
+  wind = Math.round(response.data.wind.speed);
 }
 
 function searchedIframe(response) {
@@ -109,25 +112,34 @@ function handleSearch(event) {
 }
 
 let isFahrenheit = false;
+let iskmph = false;
 
 function toggleUnits(event) {
   let currentTemperatureElement = document.querySelector("#current-temp");
-  let unitLable = document.querySelector("#unit-lable");
+  // let unitLable = document.querySelector("#unit-lable");
+  let windEliment = document.querySelector("#wind");
 
   if (isFahrenheit) {
     // Convert back to Celsius
-    currentTemperatureElement.innerHTML = `°${Math.round(celsius)}`;
-    unitLable.innerHTML = `C`;
+    currentTemperatureElement.innerHTML = `°${Math.round(
+      celsius
+    )}  <small>C</small>`;
+    windEliment.innerHTML = `${wind} kmph`;
+    // unitLable.innerHTML = `C`;
     isFahrenheit = false;
   } else {
     // Convert to Fahrenheit
+    let imperialwind = Math.round(wind / 1.6);
     let fahrenheit = (celsius * 9) / 5 + 32;
-    currentTemperatureElement.innerHTML = `°${Math.round(fahrenheit)}`;
-    unitLable.innerHTML = `F`;
+    currentTemperatureElement.innerHTML = `°${Math.round(
+      fahrenheit
+    )} <small>F</small>`;
+    windEliment.innerHTML = `${imperialwind} mph`;
+    // unitLable.innerHTML = `F`;
     isFahrenheit = true;
   }
 }
-
+let wind = null;
 let celsius = null;
 
 let searchFormElement = document.querySelector("#search-form");

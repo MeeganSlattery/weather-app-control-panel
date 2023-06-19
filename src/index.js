@@ -115,9 +115,6 @@ function getGeoWeather(event) {
   navigator.geolocation.getCurrentPosition(displayGeoWeather);
 }
 
-let currentLocationEliment = document.querySelector("#current-Location");
-currentLocationEliment.addEventListener("click", getGeoWeather);
-
 function search(city) {
   let apiKey = "3f2244aoecf15c232c55c6ccebt260f0";
   let apiUrlCity = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
@@ -165,6 +162,9 @@ function toggleUnits(event) {
 }
 let wind = null;
 let celsius = null;
+
+let currentLocationEliment = document.querySelector("#current-Location");
+currentLocationEliment.addEventListener("click", getGeoWeather);
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearch);

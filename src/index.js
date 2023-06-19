@@ -94,6 +94,30 @@ function changeBackground(response) {
   }
 }
 
+function displayGeoWeather(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+
+  let LatLon = document.querySelector("#unit-lable");
+  LatLon.innerHTML = `Latitude ${latitude} <br /> Longitude ${longitude}`;
+
+  console.log(latitude, longitude);
+  let apiKey = "3f2244aoecf15c232c55c6ccebt260f0";
+  let apiGeoUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
+
+  axios.get(apiGeoUrl).then(displayCurrentTemperatureSearch);
+  axios.get(apiGeoUrl).then(searchedIframe);
+  axios.get(apiGeoUrl).then(changeBackground);
+}
+
+function getGeoWeather(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(displayGeoWeather);
+}
+
+let currentLocationEliment = document.querySelector("#current-Location");
+currentLocationEliment.addEventListener("click", getGeoWeather);
+
 function search(city) {
   let apiKey = "3f2244aoecf15c232c55c6ccebt260f0";
   let apiUrlCity = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
@@ -129,7 +153,7 @@ function toggleUnits(event) {
     isFahrenheit = false;
   } else {
     // Convert to Fahrenheit
-    let imperialwind = Math.round(wind / 1.6);
+    let imperialwind = Math.round(wind / 1.609);
     let fahrenheit = (celsius * 9) / 5 + 32;
     currentTemperatureElement.innerHTML = `°${Math.round(
       fahrenheit

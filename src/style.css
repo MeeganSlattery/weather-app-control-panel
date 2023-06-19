@@ -30,11 +30,11 @@ form {
   margin-bottom: 0;
 }
 .unit {
-  color: aqua;
+  color: rgba(255, 255, 255, 0.053);
   position: fixed;
   left: 10px;
   top: 4px;
-  font-size: large;
+  font-size: x-small;
 }
 .upper-menu {
   margin: 1rem;

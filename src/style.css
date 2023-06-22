@@ -168,6 +168,9 @@ form {
 .low {
   color: rgba(255, 255, 255, 0.49);
 }
+.high {
+  color: #ffffff;
+}
 .element-name {
   line-height: 45px;
   color: rgb(255, 197, 4);

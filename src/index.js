@@ -58,6 +58,44 @@ function displayCurrentTemperatureSearch(response) {
   wind = Math.round(response.data.wind.speed);
 }
 
+function displayWeeklyForcast() {
+  let weeklyForcastEliment = document.querySelector("#weekly-ul");
+  let forcastHtml = "";
+
+  let days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  // Create one row with two columns of three days each
+  let row = `<div class="row">`;
+  for (let i = 0; i < 6; i += 3) {
+    row += `<div class="col-md-6">`;
+    for (let j = i; j < i + 3; j++) {
+      row += `<div class="week-box" id="week-box">
+              <li class="weekday">
+                ${days[j]} <span class="week-icon">☁︎</span><br /><span
+                  class="week-high-low"
+                >
+                  <span class="high"> 00</span>
+                  <span class="low">00 </span>
+                </span>
+              </li>
+            </div>`;
+    }
+    row += `</div>`;
+  }
+  row += `</div>`;
+  forcastHtml += row;
+
+  weeklyForcastEliment.innerHTML = forcastHtml;
+}
+
 function searchedIframe(response) {
   let searchedCoorDataLat = response.data.coordinates.latitude;
   let searchedCoorDataLon = response.data.coordinates.longitude;
@@ -173,3 +211,4 @@ let unitButton = document.querySelector("#unit-button");
 unitButton.addEventListener("click", toggleUnits);
 
 search("London");
+displayWeeklyForcast();

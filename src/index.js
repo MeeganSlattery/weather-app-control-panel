@@ -56,9 +56,20 @@ function displayCurrentTemperatureSearch(response) {
 
   celsius = Math.round(response.data.temperature.current);
   wind = Math.round(response.data.wind.speed);
+
+  getWeeklyForcast(response.data.city);
 }
 
-function displayWeeklyForcast() {
+function getWeeklyForcast(city) {
+  console.log(city);
+  let apiKey = "3f2244aoecf15c232c55c6ccebt260f0";
+  let apiUrlWeekly = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  console.log(apiUrlWeekly);
+  axios.get(apiUrlWeekly).then(displayWeeklyForcast);
+}
+
+function displayWeeklyForcast(response) {
+  console.log(response.data);
   let weeklyForcastEliment = document.querySelector("#weekly-ul");
   let forcastHtml = "";
 
@@ -209,4 +220,4 @@ let unitButton = document.querySelector("#unit-button");
 unitButton.addEventListener("click", toggleUnits);
 
 search("London");
-displayWeeklyForcast();
+//displayWeeklyForcast();

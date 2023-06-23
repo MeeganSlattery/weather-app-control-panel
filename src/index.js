@@ -69,10 +69,8 @@ function displayWeeklyForcast() {
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday",
   ];
 
-  // Create one row with two columns of three days each
   let row = `<div class="row">`;
   for (let i = 0; i < 6; i += 3) {
     row += `<div class="col-md-6">`;

@@ -91,15 +91,15 @@ function displayWeeklyForcast(response) {
 
   let row = `<div class="row">`;
 
-  for (let i = 0; i < 6; i += 3) {
+  for (let i = 1; i < 7; i += 3) {
     row += `<div class="col-md-6">`;
     for (let j = i; j < i + 3; j++) {
       let weekdayObject = weeklyForecastResponse[j];
       let timeInMs = weekdayObject.time * 1000;
       let date = new Date(timeInMs);
       let weekDay = date.toLocaleDateString("en-US", { weekday: "long" });
-      if (j === 0) {
-        weekDay = "Today";
+      if (j === 1) {
+        weekDay = "Tomorrow";
       }
 
       row += `<div class="week-box" id="week-box">
@@ -125,6 +125,16 @@ function displayWeeklyForcast(response) {
   forcastHtml += row;
 
   weeklyForcastEliment.innerHTML = forcastHtml;
+
+  let todaysHighLow = document.querySelector("#high-low-today");
+  let todaysForcastHigh = Math.round(
+    weeklyForecastResponse[0].temperature.maximum
+  );
+  let todaysForcastLow = Math.round(
+    weeklyForecastResponse[0].temperature.minimum
+  );
+  todaysHighLow.innerHTML = `<span class="high" id="todays-high">°${todaysForcastHigh} </span
+              ><span class="low" id="todays-low">°${todaysForcastLow}</span>`;
 }
 
 function searchedIframe(response) {

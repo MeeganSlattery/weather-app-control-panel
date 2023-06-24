@@ -70,29 +70,40 @@ function getWeeklyForcast(city) {
 
 function displayWeeklyForcast(response) {
   console.log(response.data);
+  let weeklyForecastResponse = response.data.daily;
+
   let weeklyForcastEliment = document.querySelector("#weekly-ul");
   let forcastHtml = "";
 
-  let days = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  // let days = [
+  //  "Monday",
+  //  "Tuesday",
+  //  "Wednesday",
+  //  "Thursday",
+  //  "Friday",
+  // "Saturday",
+  // ];
 
   let row = `<div class="row">`;
   for (let i = 0; i < 6; i += 3) {
     row += `<div class="col-md-6">`;
     for (let j = i; j < i + 3; j++) {
+      let weekdayObject = weeklyForecastResponse[j];
       row += `<div class="week-box" id="week-box">
               <li class="weekday">
-                ${days[j]} <span class="week-icon">☁︎</span><br /><span
+                ${
+                  weekdayObject.time
+                } <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+        weekdayObject.condition.icon
+      }.png" alt="Weather icon" class="week-icon"><br /><span
                   class="week-high-low"
                 >
-                  <span class="high"> 00</span>
-                  <span class="low">00 </span>
+                  <span class="high"> °${Math.round(
+                    weekdayObject.temperature.maximum
+                  )}</span>
+                  <span class="low">°${Math.round(
+                    weekdayObject.temperature.minimum
+                  )} </span>
                 </span>
               </li>
             </div>`;

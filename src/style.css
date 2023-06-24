@@ -153,6 +153,13 @@ form {
   margin-bottom: 0;
   background: rgba(0, 0, 0, 0.45);
 }
+.quote-box {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.55);
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 25px;
+}
 .week-box {
   position: relative;
   left: -15px;
@@ -164,6 +171,9 @@ form {
 }
 .week-high-low {
   color: #ffffff;
+}
+.week-icon {
+  max-width: 60px;
 }
 .low {
   color: rgba(255, 255, 255, 0.49);

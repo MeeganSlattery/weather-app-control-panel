@@ -69,31 +69,42 @@ function getWeeklyForcast(city) {
 }
 
 function displayWeeklyForcast(response) {
-  console.log(response.data);
+  console.log(response.data.daily);
   let weeklyForecastResponse = response.data.daily;
+
+  for (let i = 0; i < weeklyForecastResponse.length; i++) {
+    let timeInMs = weeklyForecastResponse[i].time * 1000;
+    let date = new Date(timeInMs);
+
+    let dateNumber = date.getDate();
+    let weekDay = date.toLocaleDateString("en-US", { weekday: "long" });
+
+    console.log(
+      `Date: ${date.toDateString()}, Time: ${date.toLocaleTimeString()},
+      `
+    );
+    console.log(`Date Number: ${dateNumber} Week Day: ${weekDay}`);
+  }
 
   let weeklyForcastEliment = document.querySelector("#weekly-ul");
   let forcastHtml = "";
 
-  // let days = [
-  //  "Monday",
-  //  "Tuesday",
-  //  "Wednesday",
-  //  "Thursday",
-  //  "Friday",
-  // "Saturday",
-  // ];
-
   let row = `<div class="row">`;
+
   for (let i = 0; i < 6; i += 3) {
     row += `<div class="col-md-6">`;
     for (let j = i; j < i + 3; j++) {
       let weekdayObject = weeklyForecastResponse[j];
+      let timeInMs = weekdayObject.time * 1000;
+      let date = new Date(timeInMs);
+      let weekDay = date.toLocaleDateString("en-US", { weekday: "long" });
+      if (j === 0) {
+        weekDay = "Today";
+      }
+
       row += `<div class="week-box" id="week-box">
               <li class="weekday">
-                ${
-                  weekdayObject.time
-                } <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                ${weekDay} <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
         weekdayObject.condition.icon
       }.png" alt="Weather icon" class="week-icon"><br /><span
                   class="week-high-low"

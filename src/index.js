@@ -109,12 +109,12 @@ function displayWeeklyForcast(response) {
       }.png" alt="Weather icon" class="week-icon"><br /><span
                   class="week-high-low"
                 >
-                  <span class="high"> °${Math.round(
+                  <span class="high"> °<span class="toConvert">${Math.round(
                     weekdayObject.temperature.maximum
-                  )}</span>
-                  <span class="low">°${Math.round(
+                  )}</span></span>
+                  <span class="low">°<span class="toConvert">${Math.round(
                     weekdayObject.temperature.minimum
-                  )} </span>
+                  )}</span> </span>
                 </span>
               </li>
             </div>`;
@@ -133,8 +133,8 @@ function displayWeeklyForcast(response) {
   let todaysForcastLow = Math.round(
     weeklyForecastResponse[0].temperature.minimum
   );
-  todaysHighLow.innerHTML = `<span class="high" id="todays-high">°${todaysForcastHigh} </span
-              ><span class="low" id="todays-low">°${todaysForcastLow}</span>`;
+  todaysHighLow.innerHTML = `<span class="high" id="todays-high">°<span class="toConvert">${todaysForcastHigh}</span> </span
+              ><span class="low" id="todays-low">°<span class="toConvert">${todaysForcastLow}</span></span>`;
 }
 
 function searchedIframe(response) {
@@ -219,8 +219,8 @@ let iskmph = false;
 
 function toggleUnits(event) {
   let currentTemperatureElement = document.querySelector("#current-temp");
-  // let unitLable = document.querySelector("#unit-lable");
   let windEliment = document.querySelector("#wind");
+  let conversionNumberElements = document.querySelectorAll(`.toConvert`);
 
   if (isFahrenheit) {
     // Convert back to Celsius
@@ -228,7 +228,11 @@ function toggleUnits(event) {
       celsius
     )}  <small>C</small>`;
     windEliment.innerHTML = `${wind} kmph`;
-    // unitLable.innerHTML = `C`;
+    conversionNumberElements.forEach((element) => {
+      let conversionNumberCelsius =
+        ((parseInt(element.innerHTML) - 32) * 5) / 9;
+      element.innerHTML = Math.round(conversionNumberCelsius);
+    });
     isFahrenheit = false;
   } else {
     // Convert to Fahrenheit
@@ -238,7 +242,11 @@ function toggleUnits(event) {
       fahrenheit
     )} <small>F</small>`;
     windEliment.innerHTML = `${imperialwind} mph`;
-    // unitLable.innerHTML = `F`;
+    conversionNumberElements.forEach((element) => {
+      let conversionNumberFahrenheit =
+        (parseInt(element.innerHTML) * 9) / 5 + 32;
+      element.innerHTML = Math.round(conversionNumberFahrenheit);
+    });
     isFahrenheit = true;
   }
 }
@@ -249,7 +257,9 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearch);
 
 let unitButton = document.querySelector("#unit-button");
-unitButton.addEventListener("click", toggleUnits);
+unitButton.addEventListener("click", function () {
+  toggleUnits();
+});
 
 search("London");
 //displayWeeklyForcast();

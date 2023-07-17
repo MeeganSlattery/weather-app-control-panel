@@ -222,32 +222,38 @@ function toggleUnits(event) {
   let windEliment = document.querySelector("#wind");
   let conversionNumberElements = document.querySelectorAll(`.toConvert`);
 
-  if (isFahrenheit) {
-    // Convert back to Celsius
-    currentTemperatureElement.innerHTML = `°${Math.round(
-      celsius
-    )}  <small>C</small>`;
-    windEliment.innerHTML = `${wind} kmph`;
-    conversionNumberElements.forEach((element) => {
-      let conversionNumberCelsius =
-        ((parseInt(element.innerHTML) - 32) * 5) / 9;
-      element.innerHTML = Math.round(conversionNumberCelsius);
-    });
-    isFahrenheit = false;
-  } else {
-    // Convert to Fahrenheit
-    let imperialwind = Math.round(wind / 1.609);
-    let fahrenheit = (celsius * 9) / 5 + 32;
-    currentTemperatureElement.innerHTML = `°${Math.round(
-      fahrenheit
-    )} <small>F</small>`;
-    windEliment.innerHTML = `${imperialwind} mph`;
-    conversionNumberElements.forEach((element) => {
-      let conversionNumberFahrenheit =
-        (parseInt(element.innerHTML) * 9) / 5 + 32;
-      element.innerHTML = Math.round(conversionNumberFahrenheit);
-    });
-    isFahrenheit = true;
+  if (
+    event.key === "Enter" ||
+    event.type === "click" ||
+    event.target.id === "unit-button"
+  ) {
+    if (isFahrenheit) {
+      // Convert back to Celsius
+      currentTemperatureElement.innerHTML = `°${Math.round(
+        celsius
+      )}  <small>C</small>`;
+      windEliment.innerHTML = `${wind} kmph`;
+      conversionNumberElements.forEach((element) => {
+        let conversionNumberCelsius =
+          ((parseInt(element.innerHTML) - 32) * 5) / 9;
+        element.innerHTML = Math.round(conversionNumberCelsius);
+      });
+      isFahrenheit = false;
+    } else {
+      // Convert to Fahrenheit
+      let imperialwind = Math.round(wind / 1.609);
+      let fahrenheit = (celsius * 9) / 5 + 32;
+      currentTemperatureElement.innerHTML = `°${Math.round(
+        fahrenheit
+      )} <small>F</small>`;
+      windEliment.innerHTML = `${imperialwind} mph`;
+      conversionNumberElements.forEach((element) => {
+        let conversionNumberFahrenheit =
+          (parseInt(element.innerHTML) * 9) / 5 + 32;
+        element.innerHTML = Math.round(conversionNumberFahrenheit);
+      });
+      isFahrenheit = true;
+    }
   }
 }
 let wind = null;
@@ -256,10 +262,20 @@ let celsius = null;
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearch);
 
+// Add event listener to listen for Enter key press
+document.addEventListener("keydown", toggleUnits);
+
+// Add event listener to listen for click on Enter button and unit button
+let enterButton = document.querySelector("#search");
+enterButton.addEventListener("click", toggleUnits);
+
 let unitButton = document.querySelector("#unit-button");
-unitButton.addEventListener("click", function () {
-  toggleUnits();
-});
+unitButton.addEventListener("click", toggleUnits);
+
+// let unitButton = document.querySelector("#unit-button");
+// unitButton.addEventListener("click", function () {
+//  toggleUnits();
+// });
 
 search("London");
 //displayWeeklyForcast();
